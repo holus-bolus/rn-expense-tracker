@@ -37,7 +37,17 @@ const ExpensesOverview = () => {
           ),
         }}
       />
-      <BottomTabs.Screen name="AllExpenses" component={AllExpenses} />
+      <BottomTabs.Screen
+        name="AllExpenses"
+        component={AllExpenses}
+        options={{
+          title: "All Expenses",
+          tabBarLabel: "All",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="calendar" size={size} color={color} />
+          ),
+        }}
+      />
     </BottomTabs.Navigator>
   );
 };
