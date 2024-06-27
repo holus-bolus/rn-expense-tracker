@@ -3,9 +3,16 @@ import { GlobalStyles } from "../../constants/styles";
 
 const Button = ({ children, onPress, mode }) => {
   return (
-    <View>
-      <Pressable onPress={onPress}>
-        <View style={[styles.button, mode === "flat" && styles.flat]}>
+    <View style={styles.buttonContainer}>
+      <Pressable
+        onPress={onPress}
+        style={({ pressed }) => [
+          styles.button,
+          mode === "flat" && styles.flat,
+          pressed && styles.pressed,
+        ]}
+      >
+        <View style={styles.innerContainer}>
           <Text style={[styles.buttonText, mode === "flat" && styles.flatText]}>
             {children}
           </Text>
@@ -18,10 +25,14 @@ const Button = ({ children, onPress, mode }) => {
 export default Button;
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    borderRadius: 4,
+    overflow: "hidden",
+  },
   button: {
     borderRadius: 4,
     padding: 10,
-    backgroundColor: GlobalStyles.colors.primary500,
+    backgroundColor: GlobalStyles.colors.primary200,
   },
   flat: {
     backgroundColor: "transparent",
@@ -33,5 +44,11 @@ const styles = StyleSheet.create({
   flatText: {
     color: GlobalStyles.colors.primary500,
     textAlign: "center",
+  },
+  pressed: {
+    opacity: 0.75,
+  },
+  innerContainer: {
+    padding: 10,
   },
 });

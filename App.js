@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { GlobalStyles } from "./constants/styles";
 import { Ionicons } from "@expo/vector-icons";
 import IconButton from "./components/UI/IconButton";
+import { ExpensesProvider } from "./store/expenses-context";
 
 const Stack = createStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -67,7 +68,7 @@ const ExpensesOverview = () => {
 
 export default function App() {
   return (
-    <>
+    <ExpensesProvider>
       <StatusBar
         style={{
           backgroundColor: "blue",
@@ -97,7 +98,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </ExpensesProvider>
   );
 }
 
