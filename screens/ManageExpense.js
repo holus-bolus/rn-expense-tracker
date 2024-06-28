@@ -5,6 +5,7 @@ import { GlobalStyles } from "../constants/styles";
 import Button from "../components/UI/Button";
 import { ExpensesContext } from "../store/expenses-context";
 import { useContext } from "react";
+import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 
 const MangeExpense = ({ route, navigation }) => {
   const editedExpenseId = route.params?.expenseId;
@@ -33,6 +34,7 @@ const MangeExpense = ({ route, navigation }) => {
   };
   return (
     <View style={styles.container}>
+      <ExpenseForm />
       <View style={styles.buttons}>
         <Button onPress={cancelHandler}>Cancel</Button>
         <Button onPress={confirmHandler}>
